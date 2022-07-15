@@ -4,6 +4,7 @@ const {
   reply,
   update,
   list,
+  remove,
 } = require("../controller/comment.controller");
 const {
   verifyAuth,
@@ -18,5 +19,7 @@ commentRouter.post("/", verifyAuth, create);
 commentRouter.post("/:comment_id/reply", verifyAuth, reply);
 
 commentRouter.patch("/:comment_id", verifyAuth, verifyPermission, update);
+
+commentRouter.delete("/:comment_id", verifyAuth, verifyPermission, remove);
 
 module.exports = commentRouter;

@@ -23,7 +23,7 @@ class AuthServer {
     console.log(tableName, user_id, id);
     const mod = require(`../app/models/${tableName}`);
     const result = await mod.findAll({
-      where: { user_id, id },
+      where: { user_id, id: parseInt(id) },
     });
     return result.length;
   }

@@ -46,7 +46,7 @@ async function verifyPermission(ctx, next) {
     id,
     ctx.params[resorceKey]
   );
-  console.log(status);
+  console.log("status", status);
   if (status) {
     await next();
   } else {

@@ -27,5 +27,14 @@ class MomentController {
     const result = await momentService.remove(ctx.request.params.moment_id);
     ctx.body = { code: 200, data: result };
   }
+  async createLabels(ctx, next) {
+    ctx.body = {
+      code: 200,
+      data: {
+        a: ctx.request.body.labels,
+        b: ctx.params.moment_id,
+      },
+    };
+  }
 }
 module.exports = new MomentController();

@@ -30,5 +30,11 @@ class CommentServer {
   async findAll(moment_id) {
     return `查找动态${moment_id}所有评论`;
   }
+  async deleteByMomentId(id) {
+    const result = await Comment.destroy({
+      where: { id },
+    });
+    return { affectRows: result };
+  }
 }
 module.exports = new CommentServer();

@@ -4,6 +4,15 @@ const { Moment, User, Comment } = require("../app/database");
 class MomentServer {
   async create(content, user_id) {
     const result = await Moment.create({ content, user_id });
+    // 同属更新c_id
+    await Moment.update(
+      { c_id: result["id"] },
+      {
+        where: {
+          c_id: null,
+        },
+      }
+    );
     return result;
   }
   async getMomentList(offset = 0, limit = 10) {

@@ -42,5 +42,13 @@ class CommentController {
       data: result,
     };
   }
+  async remove(ctx, next) {
+    const { comment_id } = ctx.request.params;
+    const result = await commentService.deleteByMomentId(comment_id);
+    ctx.body = {
+      code: 200,
+      data: result,
+    };
+  }
 }
 module.exports = new CommentController();

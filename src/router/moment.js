@@ -9,11 +9,14 @@ const {
   getMomentById,
   update,
   remove,
+  createLabels,
 } = require("../controller/moment.controller");
 
 const momentRouter = new Router({ prefix: "/moment" });
 
 momentRouter.post("/", verifyAuth, create);
+// 添加标签
+momentRouter.post("/:moment_id/labels", verifyAuth, createLabels);
 
 momentRouter.get("/", getMomentList);
 
